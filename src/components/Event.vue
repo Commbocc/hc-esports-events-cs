@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { breakpointsBootstrapV5, useBreakpoints } from "@vueuse/core";
 import { events } from "../lib/events";
-
-const breakpoints = useBreakpoints(breakpointsBootstrapV5);
-
-const smAndLarger = breakpoints.greater("sm");
 </script>
 
 <template>
-  <table class="table">
+  <p v-if="!events.data.length">There are currently no events scheduled.</p>
+
+  <table v-else class="table">
     <thead>
       <tr>
         <th>Tournament/Event</th>
@@ -22,14 +19,27 @@ const smAndLarger = breakpoints.greater("sm");
     <tbody>
       <tr v-for="(event, i) in events.data" :key="i">
         <td>{{ event.fields.Name }}</td>
+
         <td>
           {{ new Date(event.fields.DateTime).toLocaleDateString("en-US") }},
-          {{ new Date(event.fields.DateTime).toLocaleTimeString("en-US") }}
+          {{
+            new Date(event.fields.DateTime).toLocaleTimeString("en-US", {
+              hour: "numeric",
+              minute: "2-digit",
+            })
+          }}
         </td>
-        <td>{{ event.fields.LocationName[0] }}</td>
-        <td>{{ event.fields.Description }}</td>
+
         <td>
-          <a href="{{event.fields.Link}}">{{ event.fields.Link }}</a>
+          <a :href="`${event.fields.LocationUrl}`">{{
+            event.fields.LocationName[0]
+          }}</a>
+        </td>
+
+        <td>{{ event.fields.Description }}</td>
+
+        <td>
+          <a class="btn btn-primary" :href="`${event.fields.Link}`">Register</a>
         </td>
       </tr>
     </tbody>
