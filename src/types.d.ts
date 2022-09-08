@@ -6,6 +6,7 @@ interface Event {
     DateTime: Date;
     LocationName: string;
     Description?: string;
-    Link?: string;
+    Link: string;
+    LocationUrl: string;
   };
 }
