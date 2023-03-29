@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { events, fetchEvents } from "./lib/events";
-import Event from "./components/Event.vue";
+import Events from "./components/Events.vue";
 
 fetchEvents();
 
@@ -17,6 +17,6 @@ const containerClass = import.meta.env.DEV
   </div>
 
   <article v-else :class="containerClass">
-    <Event />
+    <Events />
   </article>
 </template>

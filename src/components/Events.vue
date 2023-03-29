@@ -6,6 +6,8 @@ import { events } from "../lib/events";
   <p v-if="!events.data.length">There are currently no events scheduled.</p>
 
   <div v-else class="table-responsive">
+    <!-- <pre>{{ events }}</pre> -->
+
     <table class="table">
       <thead>
         <tr>
@@ -22,19 +24,17 @@ import { events } from "../lib/events";
           <td>{{ event.fields.Name }}</td>
 
           <td>
-            {{ new Date(event.fields.DateTime).toLocaleDateString("en-US") }},
             {{
-              new Date(event.fields.DateTime).toLocaleTimeString("en-US", {
-                hour: "numeric",
-                minute: "2-digit",
-              })
+              event.fields?.DateTime
+                ? new Date(event.fields?.DateTime).toLocaleString()
+                : null
             }}
           </td>
 
           <td>
-            <a :href="`${event.fields.LocationUrl}`">{{
-              event.fields.LocationName[0]
-            }}</a>
+            <a :href="`${event.fields.LocationUrl}`"
+              >{{ event.fields.LocationName?.[0] }}
+            </a>
           </td>
 
           <td>

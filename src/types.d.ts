@@ -2,11 +2,11 @@ interface Event {
   id: string;
   createdTime: string;
   fields: {
-    Name: string;
-    DateTime: Date;
-    LocationName: string;
+    Name?: string;
+    DateTime?: string;
+    LocationName?: string;
     Description?: string;
-    Link: string;
-    LocationUrl: string;
+    Link?: string;
+    LocationUrl?: string;
   };
 }
