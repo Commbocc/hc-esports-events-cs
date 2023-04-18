@@ -32,7 +32,7 @@ import { events } from "../lib/events";
           </td>
 
           <td>
-            <a :href="`${event.fields.LocationUrl}`"
+            <a :href="`${event.fields.LocationUrl}`" target="_top"
               >{{ event.fields.LocationName?.[0] }}
             </a>
           </td>
@@ -42,7 +42,10 @@ import { events } from "../lib/events";
           </td>
 
           <td>
-            <a class="btn btn-primary" :href="`${event.fields.Link}`"
+            <a
+              class="btn btn-primary"
+              :href="`${event.fields.Link}`"
+              target="_blank"
               >Register</a
             >
           </td>
