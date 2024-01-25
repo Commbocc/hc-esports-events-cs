@@ -6,7 +6,7 @@ fetchEvents();
 
 const containerClass = import.meta.env.DEV
   ? "py-5 container"
-  : "container-fluid pt-3";
+  : "container-fluid pt-2";
 </script>
 
 <template>

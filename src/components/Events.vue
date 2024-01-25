@@ -6,11 +6,11 @@ import { events } from "../lib/events";
   <p v-if="!events.data.length">There are currently no events scheduled.</p>
 
   <div class="card mb-3" v-for="(event, i) in events.data" :key="i">
-    <h5 class="card-header">{{ event.fields.Name }}</h5>
+    <h5 class="card-header">{{ event.fields?.Name }}</h5>
     <div class="card-body">
       <h5 class="card-title">
-        <a :href="`${event.fields.NewUrl}`" target="_top"
-          >{{ event.fields.LocationName?.[0] }}
+        <a :href="`${event.fields?.NewUrl}`" target="_top"
+          >{{ event.fields?.LocationName?.[0] }}
         </a>
         |
         {{
@@ -26,8 +26,8 @@ import { events } from "../lib/events";
             : null
         }}
       </h5>
-      <p class="card-text">{{ event.fields.Description }}</p>
-      <a class="btn btn-primary" :href="`${event.fields.Link}`" target="_blank"
+      <p class="card-text">{{ event.fields?.Description }}</p>
+      <a class="btn btn-primary" :href="`${event.fields?.Link}`" target="_blank"
         >Register</a
       >
     </div>
