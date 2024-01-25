@@ -5,52 +5,31 @@ import { events } from "../lib/events";
 <template>
   <p v-if="!events.data.length">There are currently no events scheduled.</p>
 
-  <div v-else class="table-responsive">
-    <!-- <pre>{{ events }}</pre> -->
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Tournament/Event</th>
-          <th>Date</th>
-          <th>Location</th>
-          <th>Description</th>
-          <th>Registration Link</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr v-for="(event, i) in events.data" :key="i">
-          <td>{{ event.fields.Name }}</td>
-
-          <td>
-            {{
-              event.fields?.DateTime
-                ? new Date(event.fields?.DateTime).toLocaleString()
-                : null
-            }}
-          </td>
-
-          <td>
-            <a :href="`${event.fields.LocationUrl}`" target="_top"
-              >{{ event.fields.LocationName?.[0] }}
-            </a>
-          </td>
-
-          <td>
-            {{ event.fields.Description }}
-          </td>
-
-          <td>
-            <a
-              class="btn btn-primary"
-              :href="`${event.fields.Link}`"
-              target="_blank"
-              >Register</a
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="card mb-3" v-for="(event, i) in events.data" :key="i">
+    <h5 class="card-header">{{ event.fields.Name }}</h5>
+    <div class="card-body">
+      <h5 class="card-title">
+        <a :href="`${event.fields.NewUrl}`" target="_top"
+          >{{ event.fields.LocationName?.[0] }}
+        </a>
+        |
+        {{
+          event.fields?.DateTime
+            ? new Date(event.fields?.DateTime).toLocaleString("en-US", {
+                hour12: true,
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              })
+            : null
+        }}
+      </h5>
+      <p class="card-text">{{ event.fields.Description }}</p>
+      <a class="btn btn-primary" :href="`${event.fields.Link}`" target="_blank"
+        >Register</a
+      >
+    </div>
   </div>
 </template>

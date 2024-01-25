@@ -7,6 +7,6 @@ interface Event {
     LocationName?: string;
     Description?: string;
     Link?: string;
-    LocationUrl?: string;
+    NewUrl?: string;
   };
 }
