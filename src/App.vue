@@ -16,7 +16,7 @@ const containerClass = import.meta.env.DEV
     </div>
   </div>
 
-  <article v-else :class="containerClass">
+  <article v-else :class="containerClass" class="d-grid" :style="{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.5rem' }">
     <Events />
   </article>
 </template>
