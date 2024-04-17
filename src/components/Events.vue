@@ -5,7 +5,7 @@ import { events } from "../lib/events";
 <template>
   <p v-if="!events.data.length">There are currently no events scheduled.</p>
 
-  <div class="card mb-3" v-for="(event, i) in events.data" :key="i">
+  <div class="card" v-for="(event, i) in events.data" :key="i">
     <h5 class="card-header">{{ event.fields?.Name }}</h5>
     <div class="card-body">
       <h5 class="card-title">
